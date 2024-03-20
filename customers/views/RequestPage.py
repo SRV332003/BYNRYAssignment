@@ -15,14 +15,12 @@ def RequestPage(request):
                 'message': 'Request submitted successfully!',
                 'req_id': id,
             }
-            return render(request, 'requestPage.html', context)
         else:
             context = {
                 'form': form,
             }
-            return render(request, 'requestPage.html', context)
-
-    template = loader.get_template('requestPage.html')
-    context = {}
-    context["form"] = RequestForm()
+    else:   
+        context = {}
+        context["form"] = RequestForm()
+   
     return render(request, 'requestPage.html', context)

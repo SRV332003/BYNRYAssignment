@@ -6,7 +6,7 @@ class Request(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=15)
     service = models.CharField(max_length=100)
-    file = models.FileField(upload_to='uploads/')
+    file = models.FileField(upload_to='uploads/',)
     description = models.TextField()
     status = models.CharField(max_length=100, default="Pending")
     created_at = models.DateTimeField(auto_now_add=True)
