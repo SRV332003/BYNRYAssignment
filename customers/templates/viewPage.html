@@ -1,0 +1,42 @@
+
+{% extends "base_html.html" %}
+
+{% block title %}
+  Track Request
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron "> 
+    <h1> Track your Request </h1>
+    <p>Welcome to Gas Utility Request Tracking Page</p>
+</div>
+
+<div class="container border p-4">
+    {% if req == -1 %}
+        {% load crispy_forms_tags %}
+        <form action="" method="get" class="form-group">
+            <div class="form-group">
+                <label for="query">Request Ref ID: </label>
+                <input id="query" type="text" name="query" placeholder="Search" class="form-control">
+            </div>
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+    {% else %}
+        {% if req %}
+        <ul>
+            <li>Customer Name: {{req.name}}</li>
+            <li>Service Requested: {{req.service}}</li>
+            <li>Description: {{req.description}}</li>
+            <li>Request Date: {{req.created_at}}</li>
+            <li>Request Status: <span class="badge badge-primary" >{{req.status}}</span></li>
+            <li>Last Updated: {{req.updated_at}}</li>
+        </ul>
+        Click <a href="/ViewRequestPage">here</a> to request another service.
+        {% else %}
+            No request found with the given ID. <a href="/ViewRequestPage">Click here</a> to try again.
+        {% endif %}
+    {% endif %}
+  
+</div>
+{% endblock %}
